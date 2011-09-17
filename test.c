@@ -12,11 +12,10 @@ int main ( void )
     if (lang == 1)
     {
         int n=0;
-        while (n<10)
-        {
+        do {
             printf("Bonjour, Monde!\n");
-            n++;
-        }
+            n+=100;
+        } while (n<10);
     }
     else if (lang == 2)
         print_title();
