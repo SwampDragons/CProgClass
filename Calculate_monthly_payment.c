@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 /*this program is designed to perform a simple interest calculation, using the formula of:
  *
@@ -25,7 +26,7 @@ int main (void)
 
     rate = rate/1200;
     term = term*12;
-    monthpay = (rate + rate/((1 + rate)^term*-1))*principle;
+    monthpay = (rate + rate/pow(1+rate,-term))*principle;
     totalpay = monthpay*term;
     intexp = totalpay - principle;
 
@@ -34,7 +35,6 @@ int main (void)
     printf("Monthly payment is: %f \n", monthpay);
     printf("Total payment is: %f \n", totalpay);
     printf("Interest expense is: %f \n", intexp);
-
 
         return 0;
 }
