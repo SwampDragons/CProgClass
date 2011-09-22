@@ -26,15 +26,15 @@ int main (void)
 
     rate = rate/1200.0;
     term = term*12.0;
-    monthpay = (rate + rate/pow(1.0+rate,term -1.0))*principle;
+    monthpay = (rate + rate/(pow(1.0+rate,term)-1.0))*principle;
     totalpay = monthpay*term;
     intexp = totalpay - principle;
 
 /**************************print results****************************/
 
-    printf("Monthly payment is: %f \n", monthpay);
-    printf("Total payment is: %f \n", totalpay);
-    printf("Interest expense is: %f \n", intexp);
+    printf("Monthly payment is: %.2f \n", monthpay);
+    printf("Total payment is: %.2f \n", totalpay);
+    printf("Interest expense is: %.2f \n", intexp);
 
         return 0;
 }
