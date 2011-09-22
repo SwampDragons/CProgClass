@@ -24,9 +24,9 @@ int main (void)
 
 /************************ calculations: ****************************/
 
-    rate = rate/1200;
-    term = term*12;
-    monthpay = (rate + rate/pow(1+rate,-term))*principle;
+    rate = rate/1200.0;
+    term = term*12.0;
+    monthpay = (rate + rate/pow(1.0+rate,term -1.0))*principle;
     totalpay = monthpay*term;
     intexp = totalpay - principle;
 
