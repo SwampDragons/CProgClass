@@ -14,7 +14,7 @@ Program accepts as input:
 	*a one-character designator (C, T or S), 
 	*two military numbers in range of 0600-2200 (6:00 A.M to 10:00 P.M). 
 
-Using this input, the program computes the appropriate charge and the round up time that car was parked.
+    Using this input, the program computes the appropriate charge and the round up time that car was parked.
 
 For each vehicle, program prints:
 	*arrival time, departure time and cost. 
@@ -24,11 +24,13 @@ Program also provides a summary at the end of each day indicating:
 
 Program has loop which ends with ^Z (this means infinite loop till you cancel it...?)
 */
+
 #include <stdio.h>
 
 void calculate_payment(); /*function for calculating individual car fees is calculate_payment()*/ 
 
 int main (void)
+
 {
 int i;
 
@@ -37,50 +39,78 @@ for ( i=0 ; i<1; ) /*this loop is infinite because I am not incrementing i.*/
 
 return 0;
 }
+
 /********************define function calculate_payment()****************************************/
 void calculate_payment()
 {
-char type; int enter; int exit; double fee;
-
+char type; int enter; int exit; double fee; int valid; int numgood;
 /*find out type of vehicle*/
+
 printf("Enter the type of vehicle: C for car, T for truck, or S for senior citizen.\n");
 scanf("%c", &type);
-if (type != C & type != T & type != S)
-	{
-	printf("invalid entry.  Please enter C, T, or S);
-	scanf("%c", &type);
-	}
+  
+    if (type != 'C' & type != 'T' & type != 'S')
+    {
+        valid = 0;
+        while (valid = 0)
+        {
+            printf("You can type any letter you want, but this program  will only respond to C, T, or S\n");
+            scanf("%c", &type);
+            if (type != 'C' & type != 'T' & type != 'S')
+                valid = 0;
+            else
+                valid = 1;
+        }
+    }
+    else
+        valid = 1;    
 
 /*find out hours in garage*/
-printf("Using military numbers, write the entry and exit times separated by a space.\n")
-scanf("%d %d," &enter, &exit);
-if (enter < 600 | enter > 2200 | exit <600 | exit > 2200)
-	{
-	printf("invalid times.  Please reenter times between the hours of 0600 and 2200.\n");
-	scanf("%d %d," &enter, &exit);
-	}
+
+printf("Using military numbers, write the entry and exit times separated by a space.\n");
+scanf("%d %d", &enter, &exit);
+
+ if (enter < 600 | enter > 2200 | exit <600 | exit > 2200 | enter >= exit )
+     numgood = 0;
+ else
+     numgood = 1;
+ while(numgood==0)
+
+ {
+     printf("ID10T error detected.\nReenter your times, using military times between 0600 and 2200. \n");
+     printf("Also please make sure that the exit time occurs after the enter time");
+     scanf("%d %d", &enter, &exit);   
+        if (enter < 600 | enter > 2200 | exit <600 | exit > 2200 | enter >= exit)
+            numgood = 0;
+        else
+            numgood = 1;
+ }
+
 /**************************calculate fees****************************************/
-if ( type == C ) /*calculate fee for cars*/
+
+if ( type == 'C' ) /*calculate fee for cars*/
 {
 	
 	if (exit-enter <= 200)/*do not charge cars for less than or equal to two hours*/ 
 		fee = 0;
 	else if (200 < exit-enter <= 500) /*between 2 and 5 hours, charge $0.50 per hour*/
-		fee = .50*(exit-enter-200);
+		fee = .50*((exit-enter-200)*.01);
 	else /*between 5 and 15 hours, charge $0.25 per hour*/
-		fee = 1.5 + .25*(exit-enter-500);
+		fee = 1.5 + .25*((exit-enter-500)*.01);
 }
-else if (type == T) /*calculate fee for trucks*/
+else if (type == 'T') /*calculate fee for trucks*/
 {
 	if (exit-enter <= 100) /*do not charge trucks for less than or equal to one hour*/
 		fee = 0;
 	else if (100 < exit-enter <= 300)/*between 1 and 3 hours, charge $1.00/hour*/
-		fee = 1.00*(exit-enter-100);	
+		fee = 1.00*((exit-enter-100)*.01);	
 	else /*between 3 and 15 hours, charge $.75/hour*/
-		fee = 2.0+.75*(exit-enter-300);
+		fee = 2.0+.75*((exit-enter-300)*.01);
 }
-else if (type == S) /*calculate fee for seniors; do not charge for seniors ever*/
+else if (type == 'S') /*calculate fee for seniors; do not charge for seniors ever*/
 	fee = 0;
+
 /********************report fee********************/
+
 printf("The fee for this vehicle is $%.2f \n", fee);
 }

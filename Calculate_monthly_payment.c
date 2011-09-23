@@ -15,11 +15,11 @@ int main (void)
 
 /**********************collect input from user**********************/
 
-    printf("This program calculates monthly payments. \nPlease enter the rate.\n");
+    printf("This program will help you calculate how much you have to pay per month in order to buy that thing you probably didn't actually need. \nPlease enter the interest rate that the banks will extort out of you.\n");
     scanf("%lf", &rate);
-    printf("Now enter the term of the payment, in years. \n" );
+    printf("Now enter the term of the payment, in years of your life you'll be paying for this mistake. \n" );
     scanf("%lf", &term);
-    printf("Finally, enter the principle, or how much you owe.\n");
+    printf("Finally, enter the principle, or how much the seller managed to con you out of.\n");
     scanf("%lf", &principle);
 
 /************************ calculations: ****************************/
@@ -32,9 +32,9 @@ int main (void)
 
 /**************************print results****************************/
 
-    printf("Monthly payment is: %.2f \n", monthpay);
-    printf("Total payment is: %.2f \n", totalpay);
-    printf("Interest expense is: %.2f \n", intexp);
+    printf("Your monthly payment is: %.2f \n", monthpay);
+    printf("Your total payment is: %.2f \n", totalpay);
+    printf("which means that your interest expense is: %.2f. \n", intexp);
 
         return 0;
 }
