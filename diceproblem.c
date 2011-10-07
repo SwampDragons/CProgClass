@@ -15,7 +15,7 @@
 void main()
 
 {
-    int i; int roll; int roll2; int points; int win1; int lose1; int win2; int lose2;
+    int i; int roll; int roll2; int points; int win1=0; int lose1=0; int win2=0; int lose2=0;
     
     /*win1 is number of wins on first roll, win2 is number of wins with points. Same for lose1 and lose2
      * roll is used to compare individual rolls*/
