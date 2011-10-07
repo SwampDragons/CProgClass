@@ -21,38 +21,32 @@ void main()
      * roll is used to compare individual rolls*/
     
     srand(time(NULL));
-    for(i=0; i < 99; i++)
+    for(i=1; i <=100; i++)
     {
         roll=((rand()%(6-1+1)+1) + (rand()%(6-1+1)+1)); /*roll = points for one roll of two dice*/
         
         if ( (roll==7) || (roll==11) )
-        { 
             win1++;
-            printf("Won on the first roll in game %d \n",i);
-        }
         else if ( (roll==2) || (roll==3) || (roll==12))
-        {
             lose1++;
-            printf("Lost on the first roll in game %d \n", i);
-        }
         else
         {
             do 
-            { points = roll;
-              roll2 = (rand()%(6-1+1)+1) + (rand()%(6-1+1));}
-            while ( (roll2 != 7) || (roll2 != points) );
+            { 
+                points = roll;
+                roll2 = (rand()%(6-1+1)+1) + (rand()%(6-1+1));
+            }
+            while ( (roll2 != 7) && (roll2 != points) );
          
             if (roll2 == 7)
-            {lose2++;
-                printf("lost with points in game %d \n", i);}
+                lose2++;
             
             else if (roll2 == points)
-            {win2++;
-                printf("won with points in game %d \n", i);}
+                win2++;
         }
      }
 
     printf( "\n You won on the first roll %d times.\n You lost on the first roll %d times.\n", win1, lose1);
-    printf("You won with points %d times.\n You lost with points %d times.\n", win2, lose2);
+    printf("You won with points %d times.\n You lost with points %d times.\n\n", win2, lose2);
 
 }

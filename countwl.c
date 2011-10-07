@@ -3,16 +3,15 @@
  * digits
  * uppercase alphabetics
  * lowercase alphabetics
- *  in the input.  There are bugs in the program. I had to fix them*/
+ * in the input, which is a text file.*/
 
 #include <stdio.h>
 
 int main(void)
 {
     int iochar, numdigits=0, numlower=0, numupper=0, numwhites=0;
-    printf("Please enter a phrase:\n\n");
                 
-    while((iochar==getchar())!=EOF) 
+    while((iochar=getchar())!=EOF) 
     {
         if ((iochar==' ')||(iochar=='\t')||(iochar=='\n'))
         {
