@@ -1,5 +1,9 @@
-/*the following program is to count the whitespace, the digits, the uppercase alphabetics and lowercase alphabetics in the input. 
- * There are bugs in the program.*/
+/*the following program is to count:
+ * whitespace
+ * digits
+ * uppercase alphabetics
+ * lowercase alphabetics
+ *  in the input.  There are bugs in the program. I had to fix them*/
 
 #include <stdio.h>
 
