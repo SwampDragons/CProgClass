@@ -22,95 +22,69 @@ For each vehicle, program prints:
 Program also provides a summary at the end of each day indicating: 
 	*total cars, trucks, and senior , time and fees. 
 
-Program has loop which ends with ^Z (this means infinite loop till you cancel it...?)
+Program has loop which ends with ^Z (EOF)
 */
 
 #include <stdio.h>
 
-void calculate_payment(); /*function for calculating individual car fees is calculate_payment()*/ 
-
 int main (void)
 
 {
-int i;
+    int type=0; int enter=0; int exit=0; double fee; 
+    int cars=0; int trucks=0; int seniors=0; double totfee=0.0; int tottime=0;
 
-for ( i=0 ; i<1; ) /*this loop is infinite because I am not incrementing i.*/
-	calculate_payment();
-
-return 0;
-}
-
-/********************define function calculate_payment()****************************************/
-void calculate_payment()
-{
-char type; int enter; int exit; double fee; int valid; int numgood;
-/*find out type of vehicle*/
-
-printf("Enter the type of vehicle: C for car, T for truck, or S for senior citizen.\n");
-scanf("%c", &type);
-  
-    if (type != 'C' & type != 'T' & type != 'S')
+/************Scan input; if none of the input = EOF, then stay in while loop******/
+    
+    while( (type != EOF) && (enter !=EOF) && (exit != EOF) )
     {
-        valid = 0;
-        while (valid = 0)
-        {
-            printf("You can type any letter you want, but this program  will only respond to C, T, or S\n");
-            scanf("%c", &type);
-            if (type != 'C' & type != 'T' & type != 'S')
-                valid = 0;
-            else
-                valid = 1;
-        }
+        scanf("%d %d %d\n", &type, &enter, &exit);
+
+/****************calculate fees(inside while loop)*******************************/
+    
+    if ( type == 'C' ) /*calculate fee for cars*/
+    {
+        if (exit-enter <= 200)/*do not charge cars for less than or equal to two hours*/ 
+            fee = 0;
+        else if (200 < exit-enter <= 500) /*between 2 and 5 hours, charge $0.50 per hour*/
+		    fee = .50*((exit-enter-200)*.01);
+	    else /*between 5 and 15 hours, charge $0.25 per hour*/
+		    fee = 1.5 + .25*((exit-enter-500)*.01);
+        
+        /*increment counters*/
+        cars++;
+    }   
+    
+    else if (type == 'T') /*calculate fee for trucks*/
+    {
+    	if (exit-enter <= 100) /*do not charge trucks for less than or equal to one hour*/
+	    	fee = 0;
+	    else if (100 < exit-enter <= 300)/*between 1 and 3 hours, charge $1.00/hour*/
+		    fee = 1.00*((exit-enter-100)*.01);	
+    	else /*between 3 and 15 hours, charge $.75/hour*/
+	    	fee = 2.0+.75*((exit-enter-300)*.01);
+        
+        /*increment counters*/
+        trucks++;
+
     }
-    else
-        valid = 1;    
+    
+    else if (type == 'S') /*calculate fee for seniors; do not charge for seniors ever*/
+    {
+        fee = 0;
 
-/*find out hours in garage*/
-
-printf("Using military numbers, write the entry and exit times separated by a space.\n");
-scanf("%d %d", &enter, &exit);
-
- if (enter < 600 | enter > 2200 | exit <600 | exit > 2200 | enter >= exit )
-     numgood = 0;
- else
-     numgood = 1;
- while(numgood==0)
-
- {
-     printf("ID10T error detected.\nReenter your times, using military times between 0600 and 2200. \n");
-     printf("Also please make sure that the exit time occurs after the enter time");
-     scanf("%d %d", &enter, &exit);   
-        if (enter < 600 | enter > 2200 | exit <600 | exit > 2200 | enter >= exit)
-            numgood = 0;
-        else
-            numgood = 1;
- }
-
-/**************************calculate fees****************************************/
-
-if ( type == 'C' ) /*calculate fee for cars*/
-{
-	
-	if (exit-enter <= 200)/*do not charge cars for less than or equal to two hours*/ 
-		fee = 0;
-	else if (200 < exit-enter <= 500) /*between 2 and 5 hours, charge $0.50 per hour*/
-		fee = .50*((exit-enter-200)*.01);
-	else /*between 5 and 15 hours, charge $0.25 per hour*/
-		fee = 1.5 + .25*((exit-enter-500)*.01);
-}
-else if (type == 'T') /*calculate fee for trucks*/
-{
-	if (exit-enter <= 100) /*do not charge trucks for less than or equal to one hour*/
-		fee = 0;
-	else if (100 < exit-enter <= 300)/*between 1 and 3 hours, charge $1.00/hour*/
-		fee = 1.00*((exit-enter-100)*.01);	
-	else /*between 3 and 15 hours, charge $.75/hour*/
-		fee = 2.0+.75*((exit-enter-300)*.01);
-}
-else if (type == 'S') /*calculate fee for seniors; do not charge for seniors ever*/
-	fee = 0;
-
+        /*increment counters*/
+        seniors++;
+    }
+    
+    totfee = totfee + fee;
+    tottime = tottime + (exit-enter);
+    
+    }
 /********************report fee********************/
 
-printf("The fee for this vehicle is $%.2f \n", fee);
+    printf("\nToday there were %d cars, %d trucks, and %d seniors.\n", cars, trucks, seniors);
+    printf("In total, $%f was collected in fees for %d hours of parking", totfee, tottime);
+
+return 0;
+
 }
