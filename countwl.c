@@ -11,7 +11,7 @@ int main(void)
 {
     int iochar, numdigits=0, numlower=0, numupper=0, numwhites=0;
                 
-    while((iochar=getchar())!=EOF) 
+    while((iochar = getchar())!=EOF) 
     {
         if ((iochar==' ')||(iochar=='\t')||(iochar=='\n'))
         {
