@@ -15,9 +15,38 @@
 void main()
 
 {
-    int i;
+    int i; int roll; int points; int win1; int lose1; int win2; int lose2;
+    
+    /*win1 is number of wins on first roll, win2 is number of wins with points. Same for lose1 and lose2
+     * roll is used to compare individual rolls*/
+    
     srand(time(NULL));
-    for(i=0; i < 10; i++)
-        printf("===========>>>%d\n",rand()%(6-1+1)+1);
+    for(i=0; i < 99; i++)
+    {
+        roll=((rand()%(6-1+1)+1) + (rand()%(6-1+1)+1)); /*roll = points for one roll of two dice*/
+        if ( (roll==7) || (roll==11) )
+            win1++;
+        else if ( (roll==2) || (roll==3) || (roll==12))
+            lose1++;
+        else
+        {
+            do 
+            {
+                points = roll;
+                roll = (rand()%(6-1+1)+1) + (rand()%(6-1+1));
+            }
+            while ( (roll != 7) || (roll != points) );
+         
+            if (roll == 7)
+                lose2++;
+            else if (roll == points)
+                win2++;
+            else
+                printf("error with your logic, meg!");
+        };
+     }
+
+    printf( "\n You won on the first roll %d times.\n You lost on the first roll %d times.\n", win1, lose1);
+    printf("You won with points %d times.\n You lost with points %d times.\n", win2, lose2);
 
 }
