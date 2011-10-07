@@ -15,7 +15,7 @@
 void main()
 
 {
-    int i; int roll; int points; int win1; int lose1; int win2; int lose2;
+    int i; int roll; int roll2; int points; int win1; int lose1; int win2; int lose2;
     
     /*win1 is number of wins on first roll, win2 is number of wins with points. Same for lose1 and lose2
      * roll is used to compare individual rolls*/
@@ -24,26 +24,32 @@ void main()
     for(i=0; i < 99; i++)
     {
         roll=((rand()%(6-1+1)+1) + (rand()%(6-1+1)+1)); /*roll = points for one roll of two dice*/
+        
         if ( (roll==7) || (roll==11) )
+        { 
             win1++;
+            printf("Won on the first roll in game %d \n",i);
+        }
         else if ( (roll==2) || (roll==3) || (roll==12))
+        {
             lose1++;
+            printf("Lost on the first roll in game %d \n", i);
+        }
         else
         {
             do 
-            {
-                points = roll;
-                roll = (rand()%(6-1+1)+1) + (rand()%(6-1+1));
-            }
-            while ( (roll != 7) || (roll != points) );
+            { points = roll;
+              roll2 = (rand()%(6-1+1)+1) + (rand()%(6-1+1));}
+            while ( (roll2 != 7) || (roll2 != points) );
          
-            if (roll == 7)
-                lose2++;
-            else if (roll == points)
-                win2++;
-            else
-                printf("error with your logic, meg!");
-        };
+            if (roll2 == 7)
+            {lose2++;
+                printf("lost with points in game %d \n", i);}
+            
+            else if (roll2 == points)
+            {win2++;
+                printf("won with points in game %d \n", i);}
+        }
      }
 
     printf( "\n You won on the first roll %d times.\n You lost on the first roll %d times.\n", win1, lose1);

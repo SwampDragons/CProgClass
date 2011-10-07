@@ -41,12 +41,13 @@ int main (void)
     
     for ( s ; s < startday ; s++ )
     {
-        printf(" ");
+        if (startday != 7)
+            printf(" ");
     }
 
-    for ( i ; i < (numdays + startday) ; i++ )
+    for ( i ; i <= (numdays) ; i++ )
     {
-        if( i == (7-startday) | i== (14-startday) | i== (21-startday) | i== (28-startday) | 1== (30-startday) )
+        if( i == (7-startday) || i== (14-startday) || i== (21-startday) || i== (28-startday) || i==(35-startday) )
             printf("%d \n", i);
         else 
             printf("%d ", i);
