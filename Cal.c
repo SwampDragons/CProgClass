@@ -10,45 +10,69 @@
  * If the user enters any operator symbol other than +, −, *, or /, then display message “UnknownOperatorException is thrown
  * and the user is asked to reenter that line of input..
  */
+
 #include <stdio.h>
+void calc ();
 
 int main (void)
-
 {
-    double result = 0.0; int operator; double number;
-
+    char again;
     printf("type an operator (+, -, /, *) and a number **not** separated by a space, then press enter.\n");
-   
-    while( (operator = getchar()) != 'R')
+    
+    do     
     {
-        number = getchar();
+        calc();
+
+        printf("Again? (y/n)\n");
+        scanf(" %c", &again);
+    }
+    while( again == 'y' || again == 'Y');
+
+    return 0;
+}  
+
+
+/*****************Define Function Calc()***********************************************/
+
+void calc ()
+{
+    double result = 0.0; 
+    char operator; 
+    double number;
+    
+printf("result = %.2lf\n", result);
+
+    while(1)
+    {
+        fflush(stdin);
+        operator = getchar();
+        if (operator == 'R' || operator == 'r')
+            break;
+        scanf("%lf", &number);
+
         if (operator == '+')
-          {
-              result = result + number;
-              printf("result + %f = %f", number, result);
+          {   result += number;
+              printf("result + %.2lf = %.2lf\n", number, result);
           }
 
         else if (operator == '-')       
-          {
-              result = result - number;
-              printf(" result + %f = %f", number, result);
-          }
-        else if (operator == '*')
-          {
-              result = result*number;
-              printf(" result + %f = %f", number, result);
-          }
-        else if (operator == '/')
-          {
-              result = result/number;
-              printf(" result + %f = %f", number, result);
+          {   result -= number;
+              printf("result - %.2lf = %.2lf\n", number, result);
           }
         
-        getchar();
+        else if (operator == '*')
+          {   result *= number;
+              printf("result * %.2lf = %.2lf\n", number, result);
+          }
+        
+        else if (operator == '/')
+          {   result /= number;
+              printf("result / %.2lf = %.2lf\n", number, result);
+          }
+        else 
+            printf("%c is an unknown operation!\nReenter your last command:\n", operator);
     }
-
-    printf("final result is %f", result);
-
-    return 0;
+ 
+    printf("final result is %.2f\n", result);
 
 }
