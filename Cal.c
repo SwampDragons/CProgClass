@@ -1,5 +1,4 @@
-/*
- * Write a program that can serve as a simple calculator. 
+/*Write a program that can serve as a simple calculator. 
  * This calculator keeps track of a single number (of type double) that is called result and that starts out as 0.0. 
  * Each cycle allows the user to repeatedly add, subtract, multiply, or divide by a second number. 
  * The result of one of these operations becomes the new value of result. 
@@ -8,8 +7,7 @@
  *
  * The input format is shown in the following sample dialog.
  * If the user enters any operator symbol other than +, −, *, or /, then display message “UnknownOperatorException is thrown
- * and the user is asked to reenter that line of input..
- */
+ * and the user is asked to reenter that line of input*/
 
 #include <stdio.h>
 void calc ();
@@ -22,15 +20,14 @@ int main (void)
     do     
     {
         calc();
-
         printf("Again? (y/n)\n");
-        scanf(" %c", &again);
+        scanf("%c", &again);
+        while(getchar() != '\n');
     }
     while( again == 'y' || again == 'Y');
 
     return 0;
 }  
-
 
 /*****************Define Function Calc()***********************************************/
 
@@ -44,11 +41,14 @@ printf("result = %.2lf\n", result);
 
     while(1)
     {
-        fflush(stdin);
         operator = getchar();
         if (operator == 'R' || operator == 'r')
+        {
+            while(getchar() != '\n');
             break;
+        }
         scanf("%lf", &number);
+        while (getchar() != '\n');
 
         if (operator == '+')
           {   result += number;
