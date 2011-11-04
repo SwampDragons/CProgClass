@@ -1,5 +1,6 @@
-
-/* Programming Project ?
+/* Megan Marsh
+ *
+ * Programming Project ?
  *
  * One of the most popular games of chance is a dice game known as “craps,” which is played in casinos and back alleys throughout the world.  
  * The rules of the game are straightforward:

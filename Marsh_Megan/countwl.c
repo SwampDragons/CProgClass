@@ -1,4 +1,6 @@
-/*the following program is to count:
+/*Megan Marsh   
+ *
+ * the following program is to count:
  * whitespace
  * digits
  * uppercase alphabetics

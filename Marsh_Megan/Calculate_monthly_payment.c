@@ -1,3 +1,5 @@
+/* Megan Marsh */
+
 #include <stdio.h>
 #include <math.h>
 

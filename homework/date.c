@@ -17,29 +17,17 @@ void getArray(char * x);
 
 int main (void)
 {
-    int date[11];
-    int* dateptr = date;
+    char date[9];
+    char* dateptr = date;
     int i;
-
-/*assignment calls for putting months in strings so even though it's stupid and tedious I did it*/
-
-    char* jan = "January"; char* feb = "February"; 
-    char* mar = "March"; char* apr = "April";
-    char* may = "May"; char* jun = "June";
-    char* jul = "July"; char* aug = "August";
-    char* sep = "September"; char* oct = "October";
-    char* nov = "November"; char* dec = "December";
-
-/*array that will hold pointers to strings (month names) */
-
-    char** month[11] = {jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec};
+   /* char* month[11] = {"January", "February", "March", "April", "May", "June", "July", 
+        "August", "September", "October", "November", "December"};*/
 
     printf("enter the date (mm/dd/yyyy)\n");
+    scanf("%d", &i);
     getArray(dateptr);
 
-    i = ((date[0] * 10) + date[1]); 
-
-    printf("You entered the date %s %c%c, %s" month[i], date[3], date[4], date[6]);
+    printf("You entered the date %s %c%c, %s");
     
     return 0;
 }
@@ -48,7 +36,7 @@ int main (void)
 /****************getArray  reads input from stdin****************/
 
 
-void getArray(int* x)
+void getArray(char* x)
 {
     int i=0;
    

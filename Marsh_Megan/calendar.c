@@ -1,4 +1,6 @@
-/* This program prints a one-month calendar. 
+/*Megan Marsh
+ *
+ * This program prints a one-month calendar. 
  * The user specifies:
  *      the number of days in the month
  *      the day of week on which the month begins.

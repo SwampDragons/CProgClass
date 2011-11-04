@@ -1,4 +1,6 @@
-/*Write a program that can serve as a simple calculator. 
+/*Megan Marsh
+ *
+ * Write a program that can serve as a simple calculator. 
  * This calculator keeps track of a single number (of type double) that is called result and that starts out as 0.0. 
  * Each cycle allows the user to repeatedly add, subtract, multiply, or divide by a second number. 
  * The result of one of these operations becomes the new value of result. 
