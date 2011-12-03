@@ -13,15 +13,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void getArray(char * x);
-
 int main (void)
 {
     
     int day;
     int year;
     int monthnum;
-    char* month[11] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+    char* month[12] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
     printf("enter the date in the form (mm/dd/yyyy)\n");
     scanf("%d", &monthnum);
@@ -32,7 +30,7 @@ int main (void)
 
     monthnum--;
 
-    printf("You entered the date %s %c, %c.\n", month[monthnum], day, year);
+    printf("You entered the date %s, %d, %d.\n", month[monthnum], day, year);
     
     return 0;
 }
