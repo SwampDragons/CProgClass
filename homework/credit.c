@@ -57,24 +57,40 @@ int main (void)
     char x[16];
 	
     int length;
-	/*int num;
-	int a;*/
+	int num;
+	int even;
+    int odd;
 	
     int i;
     printf("Enter a credit card number as a long integer:\n");
     gets(x);
 	length = strlen(x);
-    for (i=0; i<16; i++)
-        x[i]=x[i]-48;
+    for (i=0; i<length; i++)
+        x[i]=x[i]-'0';
 
-	/*for (i=length-1; i >=0; i=i-2)
-	{ if (*x[i]*2<10)
-		num = *x[i];
+    /* for (i=0; i<length; i++)
+        printf("%d\n", x[i]);*/
+
+	for (i=length-1; i >=0; i=i-2)
+	{ 
+        if (x[i]*2<10)
+        {
+            num = x[i];
+            even += num;
+        }
 		else
-		num = (*x[i]*2 - 10 + 1);
-		a += num
-        */
-	
-	
-	
-	
+        {
+            num = (x[i]*2 - 10 + 1);
+            even += num;
+        }
+
+        printf("%d\n", num);
+
+    }
+    /*
+    for (i=length; i>=0; i=i-2)
+    {
+        odd = odd +x[i];
+    }*/
+    return 0;
+}
