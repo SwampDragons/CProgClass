@@ -70,7 +70,7 @@ int main (void)
     for (i=0; i<length; i++)
         x[i]=x[i]-'0';
 
-	for (i=length-1; i >=0; i=i-2)
+	for (i=length-2; i >=0; i=i-2)
 	{ 
         if (x[i]*2<10)
         {
@@ -82,25 +82,23 @@ int main (void)
             num = (x[i]*2 - 10 + 1);
             even += num;
         }
-
-        printf("even is %d\n", even);
-/*
     }
+        printf("even is %d\n", even);
     
-    for (i=length; i>=0; i=i-2)
+    for (i=length-1; i>=0; i=i-2)
     {
         odd = odd +x[i];
-        printf("odd is %d\n", odd);
     }
+        printf("odd is %d\n", odd);
 
     tot = even+odd;
     final = tot%10;
 
-    if (final == 0);
-        printf("credit card is valid");
+    if (final == 0)
+        printf("credit card is valid\n");
     else 
-        printf("credit card is not valid");
-*/
+        printf("credit card is not valid\n");
+
     return 0;
-}
+
 }
