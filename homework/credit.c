@@ -50,23 +50,30 @@ Enter a credit card number as a long integer: 4388576018410707
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 int main (void)
 {
     char x[16];
-	int length;
-	int num;
-	int a;
-	int i;
+	
+    int length;
+	/*int num;
+	int a;*/
+	
+    int i;
     printf("Enter a credit card number as a long integer:\n");
     gets(x);
 	length = strlen(x);
-	for (i=length-1; i >=0; i=i-2)
+    for (i=0; i<16; i++)
+        x[i]=x[i]-48;
+
+	/*for (i=length-1; i >=0; i=i-2)
 	{ if (*x[i]*2<10)
 		num = *x[i];
 		else
 		num = (*x[i]*2 - 10 + 1);
 		a += num
+        */
 	
 	
 	
