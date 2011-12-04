@@ -84,7 +84,7 @@ int main (void)
         }
 
         printf("even is %d\n", even);
-
+/*
     }
     
     for (i=length; i>=0; i=i-2)
@@ -100,6 +100,7 @@ int main (void)
         printf("credit card is valid");
     else 
         printf("credit card is not valid");
-
+*/
     return 0;
+}
 }
