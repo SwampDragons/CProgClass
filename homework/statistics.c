@@ -40,15 +40,16 @@
 void enterData(float *a, int *c);
 void high(float* s, int count);
 void low(float* s, int count);
-void mean(float* s, int count);
-void median (float*s, int count);
+void calculate_Mean(float* s, int count, float *avg);
+void median (float* s, int count);
+void variance(float* s, float avg, int count);
 
 int main (void)
 {
     int com;
     int counter=0;
     float data[200];
-    
+    float mean=0;
     while (com != EOF)
     {
         printf("Mini Stat Package\n______________________________________________\nThis program will perform the following:\n1) Enter data. \n2) Display data and the following statistics: \nThe number of data items, the high and low values in the data, the mean, median, mode, \nvariance, and standard deviation. \n3) Quit the program.\n_________________________________________\n\nYour choice?\n");
@@ -61,11 +62,11 @@ int main (void)
             case 2: printf("Number of data items:          %d\n", counter);
                     high(data, counter);                   
                     low(data, counter); 
-                    mean(data, counter); 
+                    calculate_Mean(data, counter, &mean); 
                     median(data, counter); 
-                    /*mode(data); 
-                    variance();
-                    stDev(data);*/
+                    /*mode(data); */
+                    variance(data, mean, counter);
+                    /*stDev(data);*/
                     break;
             case 3: break;
             default: printf("invalid entry\n"); break;
@@ -117,16 +118,16 @@ void low(float* s, int count)
     printf("Lowest:          %f\n", low);
 }
 
-void mean(float* s, int count)
+void calculate_Mean(float* s, int count, float* avg)
 {
-    float mean=0;
     int i;
+    float mean=0;
     for (i=0; i<count; i++)
     {
         mean += s[i];
     }
     mean = mean/(count);
-    printf("Mean:          %f\n", mean);
+    *avg=mean;
 }
 
 void median (float*s, int count)
@@ -154,22 +155,23 @@ void median (float*s, int count)
         median = s[(count/2)];
     printf("Median:          %f\n", median);
 }
-/*void mode()
-{}
+/*void mode()*/
 
-void variance(float* a, float mean, float *b, int size)
+void variance(float* s, float avg, int count)
 {
-    int i=0; float var=0;
-    for(i=0; i<size, i++)
+    int i=0; 
+    float var=0;
+    float temp;
+    for(i=0; i<count; i++)
         {
-            b[i]=pow(mean-a[i], 2);
-            var+=b[i];
+            temp=pow((avg-s[i]), 2);
+            var+=temp;
         }
-    var = var/size;
-    return var;
+    var = var/count;
+    printf("Variance:          %f\n", var);
 }
 
-void stDev(float variance)
+/*void stDev(float variance)
 {
     float stdev=sqrt(variance);
     return stdev;
