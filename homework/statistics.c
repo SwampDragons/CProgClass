@@ -42,10 +42,10 @@ void enterData(float *a)
     int i=0;
 
     printf("Enter one item after each data prompt.  Please return after each one.\n Signal with <EOF> when you are done with data input.\n");
-    while (x != EOF)
+    while (scanf("%f", &x) != EOF)
     {
-        scanf("%f", &x);
         a[i++] = x;
+        printf("%d: %f\n", i, a[i-1]);
     } 
 }
 
@@ -56,7 +56,7 @@ int main (void)
     
     while (com != EOF)
     {
-        printf("This program will perform the following:\n 1) Enter data. \n 2) Display data and the following statistics: the number of data items, the high and low values in the data, the mean, median, mode, variance, and standard deviation. \n 3) Quit the program.\n Enter 1, 2, or 3 to proceed.\n");
+        printf("Mini Stat Package\n ______________________________________________\nThis program will perform the following:\n 1) Enter data. \n2) Display data and the following statistics: \nThe number of data items, the high and low values in the data, the mean, median, mode, \nvariance, and standard deviation. \n3) Quit the program.\n_________________________________________\n\nYour choice?\n");
         scanf("%d", &com);
         switch(com)
         {
