@@ -41,6 +41,7 @@ void enterData(float *a, int *c);
 void high(float* s, int count);
 void low(float* s, int count);
 void mean(float* s, int count);
+void median (float*s, int count);
 
 int main (void)
 {
@@ -61,8 +62,8 @@ int main (void)
                     high(data, counter);                   
                     low(data, counter); 
                     mean(data, counter); 
-                    /*median(data); 
-                    mode(data); 
+                    median(data, counter); 
+                    /*mode(data); 
                     variance();
                     stDev(data);*/
                     break;
@@ -128,28 +129,32 @@ void mean(float* s, int count)
     printf("Mean:          %f\n", mean);
 }
 
-/*void median (float*s, float median, int i)
+void median (float*s, int count)
 {
-    int x=0; int j; float temp; float median;
-    for (x=0, x<=i, x++)
+    int i;  
+    int j;
+    float temp; 
+    float median;
+    for (i=0; i<(count-1); i++)
     {
-        for (j=x+i; j<=i+1; x++)
+        for (j=i+1; j<count; j++)
         {
-            if s[x]>s[j]
+            if (s[i]>s[j])
             {
-                temp=s[x];
-                s[x]=s[j];
-                s[x]=temp;
+                temp=s[i];
+                s[i]=s[j];
+                s[j]=temp;
             }
         }
     }
-    if(x%2==0)
-        median = {s[(x/2)-1]+s[(x/2)+1]}/2;
+
+    if (count%2==0)
+        median = ((s[((count)/2)-1]+s[(count)/2])/2);
     else
-        median = s[(x/2)+1];
-    return median;
+        median = s[(count/2)];
+    printf("Median:          %f\n", median);
 }
-void mode()
+/*void mode()
 {}
 
 void variance(float* a, float mean, float *b, int size)
