@@ -36,18 +36,20 @@
 #include <stdlib.h>
 #include <string.h>
 
-void enterdata(void)
+void enterdata(void);
 
 int main (void)
 {
     int com;
+    float data[200];
+
     printf("This program will perform the following:\n 1) Enter data. \n 2) Display data and the following statistics: the number of data items, the high and low values in the data, the mean, median, mode, variance, and standard deviation. \n 3) Quit the program.\n Enter 1, 2, or 3 to proceed.\n");
-    scanf("%d", com);
+    scanf("%d", &com);
     switch(com)
     {
-        case 1: enterData(); break;
-        case 2: statistics(); break;
-        case 3:
+        case 1: enterData(data); break;
+       /* case 2: statistics(); break;
+        case 3: break;*/
         default: printf("invalid entry\n"); break;
 
     }
@@ -55,7 +57,16 @@ int main (void)
             return 0;
 }
 
-enterData()
+void enterData(float *a)
 {
+    float x;
+    int i=0;
+
     printf("Enter one item after each data prompt.  Please return after each one.\n Signal with <EOF> when you are done with data input.\n");
+    while (x != EOF)
+    {
+        scanf("%f", &x);
+        a[i++] = x;
+    } 
+}
 
