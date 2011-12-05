@@ -39,6 +39,7 @@
 
 void enterData(float *a, int *c);
 void high(float* s, int count);
+void low(float* s, int count);
 
 int main (void)
 {
@@ -56,10 +57,9 @@ int main (void)
         {
             case 1: enterData(data, &counter); break;
             case 2: printf("Number of data items:  %d\n", counter);
-                    high(data, counter);
-                    /*
-                    low(data); 
-                    mean(data); 
+                    high(data, counter);                   
+                    low(data, counter); 
+                    /*mean(data); 
                     median(data); 
                     mode(data); 
                     variance();
@@ -102,12 +102,12 @@ void high(float* s, int count)
     printf("Highest:          %f\n", hi);
 }
 
-/*void low(float* s, float low)
+void low(float* s, int count)
 {
     float low=0;
-    int i;
-    low = s[0];
-    for (i=0; i<200; i++)
+    int i=0;
+    low=s[0];
+    for (i=0; i<count; i++)
     {
         if (s[i]<low)
             low = s[i];
@@ -115,7 +115,7 @@ void high(float* s, int count)
     printf("Lowest:          %f\n", low);
 }
 
-void mean (float*s, float mean, int i)
+/*void mean (float*s, float mean, int i)
 {
     int x=0; float mean;
     for (x=0, x<=i, i++)
