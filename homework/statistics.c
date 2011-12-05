@@ -34,7 +34,6 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <math.h>
 
 void enterData(float *a, int *c);
@@ -66,7 +65,6 @@ int main (void)
                     median(data, counter); 
                     /*mode(data); */
                     variance(data, mean, counter);
-                    /*stDev(data);*/
                     break;
             case 3: break;
             default: printf("invalid entry\n"); break;
@@ -162,6 +160,7 @@ void variance(float* s, float avg, int count)
     int i=0; 
     float var=0;
     float temp;
+    float stdev;
     for(i=0; i<count; i++)
         {
             temp=pow((avg-s[i]), 2);
@@ -169,12 +168,7 @@ void variance(float* s, float avg, int count)
         }
     var = var/count;
     printf("Variance:          %f\n", var);
+    
+    stdev= sqrt(var);
+    printf("Standard Deviation:          %f\n", stdev);
 }
-
-/*void stDev(float variance)
-{
-    float stdev=sqrt(variance);
-    return stdev;
-}
-
-*/
