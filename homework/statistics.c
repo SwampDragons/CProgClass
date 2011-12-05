@@ -40,6 +40,7 @@
 void enterData(float *a, int *c);
 void high(float* s, int count);
 void low(float* s, int count);
+void mean(float* s, int count);
 
 int main (void)
 {
@@ -56,11 +57,11 @@ int main (void)
         switch(com)
         {
             case 1: enterData(data, &counter); break;
-            case 2: printf("Number of data items:  %d\n", counter);
+            case 2: printf("Number of data items:          %d\n", counter);
                     high(data, counter);                   
                     low(data, counter); 
-                    /*mean(data); 
-                    median(data); 
+                    mean(data, counter); 
+                    /*median(data); 
                     mode(data); 
                     variance();
                     stDev(data);*/
@@ -78,10 +79,10 @@ void enterData(float* a, int* c)
     int i;
     i=*c;
 
-    printf("Enter one item after each data prompt.  Please return after each one.\n Signal with <EOF> when you are done with data input.\n\nitem %d:         ", i+1 );
+    printf("Enter one item after each data prompt.  Please return after each one.\n Signal with <EOF> when you are done with data input.\n\nitem %d:          ", i+1 );
     while (scanf("%f", &x) != EOF)
     {
-        printf("\nitem %d:      ", i+2);
+        printf("\nitem %d:          ", i+2);
         a[i++] = x;
     } 
     
@@ -115,18 +116,19 @@ void low(float* s, int count)
     printf("Lowest:          %f\n", low);
 }
 
-/*void mean (float*s, float mean, int i)
+void mean(float* s, int count)
 {
-    int x=0; float mean;
-    for (x=0, x<=i, i++)
+    float mean=0;
+    int i;
+    for (i=0; i<count; i++)
     {
-        mean += s[x];
+        mean += s[i];
     }
-    mean = mean/(x-1);
-    return mean;
+    mean = mean/(count);
+    printf("Mean:          %f\n", mean);
 }
 
-void median (float*s, float median, int i)
+/*void median (float*s, float median, int i)
 {
     int x=0; int j; float temp; float median;
     for (x=0, x<=i, x++)
