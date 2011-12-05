@@ -37,19 +37,8 @@
 #include <string.h>
 #include <math.h>
 
-void enterData(float *a, int i)
-{
-    float x;
-    int i=0;
-
-    printf("Enter one item after each data prompt.  Please return after each one.\n Signal with <EOF> when you are done with data input.\n\nitem %d:       ", i+1 );
-    while (scanf("%f", &x) != EOF)
-    {
-        printf("\nitem %d:      ", i+2);
-        a[i++] = x;
-    } 
-    return i;
-}
+int enterData(float *a, int i);
+void high(float* s, int count);
 
 int main (void)
 {
@@ -67,7 +56,8 @@ int main (void)
         {
             case 1: enterData(data, counter); break;
             case 2: printf("Number of data items:  %d\n", counter);
-                    /*high(data);
+                    high(data, counter);
+                    /*
                     low(data); 
                     mean(data); 
                     median(data); 
@@ -82,21 +72,35 @@ int main (void)
             return 0;
 }
 
-void high(float* s, float high)
+int enterData(float *a, int i)
 {
-    float high=0;
-    int i;
-    high=s[0];
-    for (i=0; i<200; i++)
+    float x;
+
+    printf("Enter one item after each data prompt.  Please return after each one.\n Signal with <EOF> when you are done with data input.\n\nitem %d:         ", i+1 );
+    while (scanf("%f", &x) != EOF)
     {
-        if (s[i]>high)
-            high=s[i];
-    }
-    printf("Highest:          %f\n", high);
-    return high;
+        printf("\nitem %d:      ", i+2);
+        a[i++] = x;
+    } 
+
+    return i;
 }
 
-void low(float* s, float low)
+void high(float* s, int count)
+{
+    float hi=0;
+    int i=0;
+
+    hi=s[0];
+    for (i=0; i<count; i++)
+    {
+        if (s[i]>hi)
+            hi=s[i];
+    }
+    printf("Highest:          %f\n", hi);
+}
+
+/*void low(float* s, float low)
 {
     float low=0;
     int i;
@@ -107,7 +111,6 @@ void low(float* s, float low)
             low = s[i];
     }
     printf("Lowest:          %f\n", low);
-    return low;
 }
 
 void mean (float*s, float mean, int i)
@@ -163,4 +166,4 @@ void stDev(float variance)
     return stdev;
 }
 
-
+*/
