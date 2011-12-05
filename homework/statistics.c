@@ -35,8 +35,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
-void enterData(float *a)
+void enterData(float *a, int i)
 {
     float x;
     int i=0;
@@ -47,23 +48,27 @@ void enterData(float *a)
         printf("\nitem %d:      ", i+2);
         a[i++] = x;
     } 
+    return i;
 }
 
 int main (void)
 {
     int com;
+    int counter=0;
     float data[200];
     
     while (com != EOF)
     {
-        printf("Mini Stat Package\n ______________________________________________\nThis program will perform the following:\n 1) Enter data. \n2) Display data and the following statistics: \nThe number of data items, the high and low values in the data, the mean, median, mode, \nvariance, and standard deviation. \n3) Quit the program.\n_________________________________________\n\nYour choice?\n");
+        printf("Mini Stat Package\n______________________________________________\nThis program will perform the following:\n1) Enter data. \n2) Display data and the following statistics: \nThe number of data items, the high and low values in the data, the mean, median, mode, \nvariance, and standard deviation. \n3) Quit the program.\n_________________________________________\n\nYour choice?\n");
+        
         scanf("%d", &com);
+        
         switch(com)
         {
-            case 1: enterData(data); break;
-            case 2: count(data);
-                    /*highest(data);
-                    lowest(data); 
+            case 1: enterData(data, counter); break;
+            case 2: printf("Number of data items:  %d\n", counter);
+                    /*high(data);
+                    low(data); 
                     mean(data); 
                     median(data); 
                     mode(data); 
@@ -88,7 +93,7 @@ high(float* s, float high)
             high=s[i];
     }
     printf("Highest:          %f\n", high);
-    return high
+    return high;
 }
 
 low(float* s, float low)
@@ -103,6 +108,59 @@ low(float* s, float low)
     }
     printf("Lowest:          %f\n", low);
     return low;
+}
+
+mean (float*s, float mean, int i)
+{
+    int x=0; float mean;
+    for (x=0, x<=i, i++)
+    {
+        mean += s[x];
+    }
+    mean = mean/(x-1);
+    return mean;
+}
+
+median (float*s, float median, int i)
+{
+    int x=0; int j; float temp; float median;
+    for (x=0, x<=i, x++)
+    {
+        for (j=x+i; j<=i+1; x++)
+        {
+            if s[x]>s[j]
+            {
+                temp=s[x];
+                s[x]=s[j];
+                s[x]=temp;
+            }
+        }
+    }
+    if(x%2==0)
+        median = {s[(x/2)-1]+s[(x/2)+1]}/2;
+    else
+        median = s[(x/2)+1];
+    return median;
+}
+mode()
+{}
+
+variance(float* a, float mean, float *b, int size)
+{
+    int i=0; float var=0;
+    for(i=0; i<size, i++)
+        {
+            b[i]=pow(mean-a[i], 2);
+            var+=b[i];
+        }
+    var = var/size;
+    return var;
+}
+
+stDev(float variance)
+{
+    float stdev=sqrt(variance);
+    return stdev;
 }
 
 
