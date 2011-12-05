@@ -41,6 +41,7 @@ void high(float* s, int count);
 void low(float* s, int count);
 void calculate_Mean(float* s, int count, float *avg);
 void median (float* s, int count);
+void mode(float *s, int count);
 void variance(float* s, float avg, int count);
 
 int main (void)
@@ -63,7 +64,7 @@ int main (void)
                     low(data, counter); 
                     calculate_Mean(data, counter, &mean); 
                     median(data, counter); 
-                    /*mode(data); */
+                    mode(data, counter);
                     variance(data, mean, counter);
                     break;
             case 3: break;
@@ -153,7 +154,31 @@ void median (float*s, int count)
         median = s[(count/2)];
     printf("Median:          %f\n", median);
 }
-/*void mode()*/
+void mode(float *s, int count)
+{
+    int c_new=0;
+    int c_old=0;
+    float mode_new=0.0;
+    float mode_old=0.0;
+    float num;
+    int i;
+    for(i=0; i<count; i++)
+    {
+        num = s[i];
+            if (num!= mode_new)
+            {
+                if(c_new > c_old)
+                {
+                    c_old = c_new;
+                    mode_old = mode_new;
+                    c_new =0;
+                }
+                mode_new = num;
+            }
+        c_new++;
+    }
+    printf("Mode:          %f\n", mode_old);
+}
 
 void variance(float* s, float avg, int count)
 {
