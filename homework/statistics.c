@@ -36,7 +36,18 @@
 #include <stdlib.h>
 #include <string.h>
 
-void enterdata(void);
+void enterData(float *a)
+{
+    float x;
+    int i=0;
+
+    printf("Enter one item after each data prompt.  Please return after each one.\n Signal with <EOF> when you are done with data input.\n");
+    while (x != EOF)
+    {
+        scanf("%f", &x);
+        a[i++] = x;
+    } 
+}
 
 int main (void)
 {
@@ -56,17 +67,3 @@ int main (void)
 
             return 0;
 }
-
-void enterData(float *a)
-{
-    float x;
-    int i=0;
-
-    printf("Enter one item after each data prompt.  Please return after each one.\n Signal with <EOF> when you are done with data input.\n");
-    while (x != EOF)
-    {
-        scanf("%f", &x);
-        a[i++] = x;
-    } 
-}
-
