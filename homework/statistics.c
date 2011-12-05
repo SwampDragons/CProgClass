@@ -50,7 +50,7 @@ int main (void)
     int counter=0;
     float data[200];
     float mean=0;
-    while (com != EOF)
+    while (com != 3)
     {
         printf("Mini Stat Package\n______________________________________________\nThis program will perform the following:\n1) Enter data. \n2) Display data and the following statistics: \nThe number of data items, the high and low values in the data, the mean, median, mode, \nvariance, and standard deviation. \n3) Quit the program.\n_________________________________________\n\nYour choice?\n");
         
