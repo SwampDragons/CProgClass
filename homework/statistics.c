@@ -37,7 +37,7 @@
 #include <string.h>
 #include <math.h>
 
-int enterData(float *a, int i);
+void enterData(float *a, int *c);
 void high(float* s, int count);
 
 int main (void)
@@ -54,7 +54,7 @@ int main (void)
         
         switch(com)
         {
-            case 1: enterData(data, counter); break;
+            case 1: enterData(data, &counter); break;
             case 2: printf("Number of data items:  %d\n", counter);
                     high(data, counter);
                     /*
@@ -72,9 +72,11 @@ int main (void)
             return 0;
 }
 
-int enterData(float *a, int i)
+void enterData(float* a, int* c)
 {
     float x;
+    int i;
+    i=*c;
 
     printf("Enter one item after each data prompt.  Please return after each one.\n Signal with <EOF> when you are done with data input.\n\nitem %d:         ", i+1 );
     while (scanf("%f", &x) != EOF)
@@ -82,8 +84,8 @@ int enterData(float *a, int i)
         printf("\nitem %d:      ", i+2);
         a[i++] = x;
     } 
-
-    return i;
+    
+    *c=i;
 }
 
 void high(float* s, int count)
