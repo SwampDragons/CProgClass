@@ -65,7 +65,6 @@ int main (void)
           * case 3: break;*/
             default: printf("invalid entry\n"); break;
         }
-
-            return 0;
     }
+            return 0;
 }
