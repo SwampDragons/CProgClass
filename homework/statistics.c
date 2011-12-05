@@ -82,7 +82,7 @@ int main (void)
             return 0;
 }
 
-high(float* s, float high)
+void high(float* s, float high)
 {
     float high=0;
     int i;
@@ -96,7 +96,7 @@ high(float* s, float high)
     return high;
 }
 
-low(float* s, float low)
+void low(float* s, float low)
 {
     float low=0;
     int i;
@@ -110,7 +110,7 @@ low(float* s, float low)
     return low;
 }
 
-mean (float*s, float mean, int i)
+void mean (float*s, float mean, int i)
 {
     int x=0; float mean;
     for (x=0, x<=i, i++)
@@ -121,7 +121,7 @@ mean (float*s, float mean, int i)
     return mean;
 }
 
-median (float*s, float median, int i)
+void median (float*s, float median, int i)
 {
     int x=0; int j; float temp; float median;
     for (x=0, x<=i, x++)
@@ -142,10 +142,10 @@ median (float*s, float median, int i)
         median = s[(x/2)+1];
     return median;
 }
-mode()
+void mode()
 {}
 
-variance(float* a, float mean, float *b, int size)
+void variance(float* a, float mean, float *b, int size)
 {
     int i=0; float var=0;
     for(i=0; i<size, i++)
@@ -157,7 +157,7 @@ variance(float* a, float mean, float *b, int size)
     return var;
 }
 
-stDev(float variance)
+void stDev(float variance)
 {
     float stdev=sqrt(variance);
     return stdev;
