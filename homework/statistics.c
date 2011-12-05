@@ -28,7 +28,7 @@
  * This program will perform the following:
  * 1) Enter data. 
  * 2) Display the data and the following statistics: 
- * the number of date item, the high and low values in the data, the mean, median, mode, 
+ * the number of data item, the high and low values in the data, the mean, median, mode, 
  * variance and standard deviation.
  * 3) Quit the Program
  */
@@ -41,11 +41,11 @@ void enterData(float *a)
     float x;
     int i=0;
 
-    printf("Enter one item after each data prompt.  Please return after each one.\n Signal with <EOF> when you are done with data input.\n");
+    printf("Enter one item after each data prompt.  Please return after each one.\n Signal with <EOF> when you are done with data input.\n\nitem %d:       ", i+1 );
     while (scanf("%f", &x) != EOF)
     {
+        printf("\nitem %d:      ", i+2);
         a[i++] = x;
-        printf("%d: %f\n", i, a[i-1]);
     } 
 }
 
@@ -61,10 +61,48 @@ int main (void)
         switch(com)
         {
             case 1: enterData(data); break;
-         /* case 2: statistics(); break;
-          * case 3: break;*/
+            case 2: count(data);
+                    /*highest(data);
+                    lowest(data); 
+                    mean(data); 
+                    median(data); 
+                    mode(data); 
+                    variance();
+                    stDev(data);*/
+                    break;
+            case 3: break;
             default: printf("invalid entry\n"); break;
         }
     }
             return 0;
 }
+
+high(float* s, float high)
+{
+    float high=0;
+    int i;
+    high=s[0];
+    for (i=0; i<200; i++)
+    {
+        if (s[i]>high)
+            high=s[i];
+    }
+    printf("Highest:          %f\n", high);
+    return high
+}
+
+low(float* s, float low)
+{
+    float low=0;
+    int i;
+    low = s[0];
+    for (i=0; i<200; i++)
+    {
+        if (s[i]<low)
+            low = s[i];
+    }
+    printf("Lowest:          %f\n", low);
+    return low;
+}
+
+
