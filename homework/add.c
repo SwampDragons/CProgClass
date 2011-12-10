@@ -11,22 +11,34 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <math.h>
 
 int main (void)
 {
-    char num1[200];
-    char num2[200];
-    
+    char num1[1024];
+    char num2[1024];
+    int i=0;
+    int i1=strlen(num1);
+    int i2=strlen(num2);
+    int sum = 0;
+
     printf("Enter the first number\n");
     gets(num1);
     printf("Enter the second number\n");
     gets(num2);
+    printf("\nThe numbers you entered are \n%s\n and \n%s\n", num1, num2);
+    
+    for (i=0; i<i1; i++)
+    {
+        sum =+ (num1[i]-48) * pow(10, 1i-1-i);
+    };
+    for ( i=0; i<i2; i++)
+    {
+        sum += (num2[i]-48) * pow(10, 12-1-i);
+    };
+    printf("The sum is: %d\n", sum);
 
-    printf("The numbers you entered are\n%s\n and\n%s\n", num1, num2);
 
-    i1=strlen(num1);
-    i2=strlen(num2);
-
-    return 0;
+    return 0; 
 }
-
