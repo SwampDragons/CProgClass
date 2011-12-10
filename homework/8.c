@@ -12,17 +12,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int convert(char x[] , char** c);
+
 int main (void)
 {
     char* charptr;
-    char a["1234Adams"];
+    char a[]="274Adams\0";
+    printf("%s", a);
     int intval;
-    convert(intval, charptr);
+    intval = convert(a, &charptr);
     return 0;
 }
 
-void convert(&intval, charptr);
+int convert(char x[] , char** c)
 {
-    gets(
+    char *num;
+    int numdigits = 0;
+    int i=0;
+    int finalint;
+    while (x[i] < (9+'0'))
+        i++;
+    numdigits = i;
+    i = 0;
+    *c = &x[numdigits];
+    num = malloc((sizeof(int))*(numdigits+1));
+    for (i=0; i<numdigits; i++);
+    {
+        *num=x[i];
+        num ++;
+        i++;
+    }
 
-
+    printf("\n%s", num);
+    finalint=atoi(num);
+    printf("\nfinal int value is %d\n", finalint);
+    return finalint;
+}
