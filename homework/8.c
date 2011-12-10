@@ -9,3 +9,20 @@
  * then after the call, intval would contain the 274, and charptr would point to the ‘A’ in the string.
  */
 
+#include <stdio.h>
+#include <stdlib.h>
+
+int main (void)
+{
+    char* charptr;
+    char a["1234Adams"];
+    int intval;
+    convert(intval, charptr);
+    return 0;
+}
+
+void convert(&intval, charptr);
+{
+    gets(
+
+
