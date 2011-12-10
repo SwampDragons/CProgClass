@@ -35,14 +35,13 @@ int convert(char x[] , char** c)
     numdigits = i;
     i = 0;
     *c = &x[numdigits];
-    num = malloc((sizeof(int))*(numdigits+1));
-    for (i=0; i<numdigits; i++);
+    num = malloc((sizeof(char))*(numdigits+1));
+    for (i=0; i<numdigits; i++)
     {
-        *num=x[i];
-        num ++;
+        num[i]=x[i];
         i++;
     }
-
+    num[i]='\0';
     printf("\n%s", num);
     finalint=atoi(num);
     printf("\nfinal int value is %d\n", finalint);
