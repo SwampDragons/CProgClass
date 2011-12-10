@@ -35,7 +35,7 @@ int main (void)
     };
     for ( i=0; i<i2; i++)
     {
-        sum += (num2[i]-48) * pow(10, 12-1-i);
+        sum += (num2[i]-48) * pow(10, i2-1-i);
     };
     printf("The sum is: %d\n", sum);
 
