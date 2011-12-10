@@ -1,4 +1,5 @@
-/* a.  Write a function in C that takes an array of char and a char ** expression as parameters. 
+/* megan marsh
+ * a.  Write a function in C that takes an array of char and a char ** expression as parameters. 
  * The array of type char would contain a string the possibly starts with a sequence of decimal digits. 
  * Have the function convert the sequence of decimal digits it finds to type int and return 
  * the converted value. Have the function set the contents of its second parameter (a char * value) 
@@ -17,7 +18,7 @@ int convert(char x[] , char** c);
 int main (void)
 {
     char* charptr;
-    char a[]="274Adams\0";
+    char a[]="174Adams\0";
     printf("%s", a);
     int intval;
     intval = convert(a, &charptr);
@@ -30,16 +31,17 @@ int convert(char x[] , char** c)
     int numdigits = 0;
     int i=0;
     int finalint;
-    while (x[i] < (9+'0'))
+    while (x[i] <= (9+'0') && x[i] >= 1 )
         i++;
     numdigits = i;
+    printf("numdigits = %d", numdigits);
     i = 0;
     *c = &x[numdigits];
     num = malloc((sizeof(char))*(numdigits+1));
     for (i=0; i<numdigits; i++)
     {
         num[i]=x[i];
-        i++;
+        /*printf("\nx[%d] is %c",i,x[i]);*/
     }
     num[i]='\0';
     printf("\n%s", num);
