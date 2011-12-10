@@ -19,8 +19,6 @@ int main (void)
     char num1[1024];
     char num2[1024];
     int i=0;
-    int i1=strlen(num1);
-    int i2=strlen(num2);
     int sum = 0;
 
     printf("Enter the first number\n");
@@ -29,9 +27,12 @@ int main (void)
     gets(num2);
     printf("\nThe numbers you entered are \n%s\n and \n%s\n", num1, num2);
     
-    for (i=0; i<i1; i++)
+    int i1=strlen(num1);    
+    int i2=strlen(num2);    
+     
+     for ( i=0; i<i1; i++)
     {
-        sum =+ (num1[i]-48) * pow(10, 1i-1-i);
+        sum += (num1[i]-48) * pow(10, i1-1-i);
     };
     for ( i=0; i<i2; i++)
     {
