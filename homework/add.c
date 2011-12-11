@@ -30,6 +30,7 @@ int main (void)
     int i1=strlen(num1);    
     int i2=strlen(num2);    
     int length;
+    
     if (i1>=i2)
     {
         length = i1;
@@ -39,23 +40,28 @@ int main (void)
         length = i2;
     }
 
-    sum = malloc(sizeof(char)*length + 1);
-    sum[length+1]='\0';
+    printf("max length is %d\n", length);
+
+    sum = malloc(sizeof(char)*length + 3);
+    sum[length+2]='\0';
     
     int temp =0;
     int tens =0;
     
-    for (i=length; i>0; i--)
+    for (i=length+1; i>0; i--)
     {
-        temp = (num1[i]-'0') + (num2[i]-'0') + tens;
+        temp = (num1[i1-1]-'0') + (num2[i2-1]-'0') + tens;
+        printf("temp is %d\n", temp);
+        i1--;
+        i2--;
         if(temp<10)
         {
-            sum[i]=(temp);
-            tens =0;
+            sum[i-1]=temp + '0';
+            tens = 0;
         }
         else 
         {
-            sum[i]=(temp-10);
+            sum[i-1]=(temp-10) + '0';
             tens = 1;
         }
     };
