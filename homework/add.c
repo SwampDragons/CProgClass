@@ -1,4 +1,5 @@
-/*2.Write a complete C programming to add two very large numbers together as follows:
+/* Megan Marsh
+ * 2.Write a complete C programming to add two very large numbers together as follows:
  * Enter the first number
  * 1999999999999999999999999999999999999999999996667766999999
  * Enter the second number
@@ -40,6 +41,7 @@ int main (void)
 
     sum = malloc(sizeof(char)*length + 3);
     sum[length+2]='\0';
+    sum[0]=0;
     
     int temp =0;
     int tens =0;
@@ -71,9 +73,11 @@ int main (void)
             {
                 temp = (num1[i1-1]-'0') + tens;
                 printf("temp is %d\n", temp);
-                sum[i-1] = temp;
+                sum[i-1] = temp+ '0';
+                printf("sum[%d] is %c\n", i-1, sum[i-1]);
                 i1--;                
                 tens=0;
+                i--;
             }
         }
         else if (i2>i1)
@@ -82,9 +86,11 @@ int main (void)
             {
                 temp = (num2[i2-1]-'0') + tens;
                 printf("temp is %d\n", temp);
-                sum[i-1] = temp;
+                sum[i-1] = temp+ '0';
+                printf("sum[%d] is %c\n", i-1, sum[i-1]);
                 i2--;                
                 tens=0;
+                i--;
             }
         }
     printf("The sum is: %s\n", sum);
