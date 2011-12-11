@@ -32,13 +32,9 @@ int main (void)
     int length;
     
     if (i1>=i2)
-    {
         length = i1;
-    }
     else 
-    {
         length = i2;
-    }
 
     printf("max length is %d\n", length);
 
@@ -50,23 +46,45 @@ int main (void)
     
     for (i=length+1; i>0; i--)
     {
-        temp = (num1[i1-1]-'0') + (num2[i2-1]-'0') + tens;
-        printf("temp is %d\n", temp);
-        i1--;
-        i2--;
-        if(temp<10)
+        while((i1-1) >=0 && (i2-1) >= 0)
         {
-            sum[i-1]=temp + '0';
-            tens = 0;
+            temp = (num1[i1-1]-'0') + (num2[i2-1]-'0') + tens;
+            printf("temp is %d\n", temp);
+            i1--;
+            i2--;
+            if(temp<10)
+            {
+                sum[i-1]=temp + '0';
+                tens = 0;
+            }
+            else 
+            {
+                sum[i-1]=(temp-10) + '0';
+                tens = 1;
+            }
         }
-        else 
+        if (i1>i2)
         {
-            sum[i-1]=(temp-10) + '0';
-            tens = 1;
+            while((i1-1) >= 0)
+            {
+                temp = (num1[i1-1]-'0') + tens;
+                printf("temp is %d\n", temp);
+                i1--;                
+                tens=0;
+            }
         }
-    };
-
+        else if (i2>i1)
+        {
+            while ((i2-1) >= 0)
+            {
+                temp = (num2[i2-1]-'0') + tens;
+                printf("temp is %d\n", temp);
+                i2--;                
+                tens=0;
+            }
+        }
     printf("The sum is: %s\n", sum);
 
     return 0; 
 }
+
