@@ -26,7 +26,7 @@ int main (void)
     gets(num1);
     printf("Enter the second number\n");
     gets(num2);
-    printf("\nThe numbers you entered are \n%s\n and \n%s\n", num1, num2);
+    /*printf("\nThe numbers you entered are \n%s\n and \n%s\n", num1, num2);*/
     
     int i1=strlen(num1);    
     int i2=strlen(num2);    
@@ -37,7 +37,7 @@ int main (void)
     else 
         length = i2;
 
-    printf("max length is %d\n", length);
+    /*printf("max length is %d\n", length);*/
 
     sum = malloc(sizeof(char)*length + 3);
     sum[length+2]='\0';
@@ -51,7 +51,7 @@ int main (void)
         while((i1) > 0 && (i2) > 0)
         {
             temp = (num1[i1-1]-'0') + (num2[i2-1]-'0') + tens;
-            printf("temp is %d\n", temp);
+            /*printf("temp is %d\n", temp);*/
             i1--;
             i2--;
             if(temp<10)
@@ -64,7 +64,7 @@ int main (void)
                 sum[i-1]=(temp-10) + '0';
                 tens = 1;
             } 
-            printf("sum[%d] is %c\n",i-1, sum[i-1]);
+            /*printf("sum[%d] is %c\n",i-1, sum[i-1]);*/
             i--;
         }
         if (i1>i2)
@@ -72,9 +72,9 @@ int main (void)
             while((i1-1) >= 0)
             {
                 temp = (num1[i1-1]-'0') + tens;
-                printf("temp is %d\n", temp);
+                /*printf("temp is %d\n", temp);*/
                 sum[i-1] = temp + '0';
-                printf("sum[%d] is %c\n", i-1, sum[i-1]);
+                /*printf("sum[%d] is %c\n", i-1, sum[i-1]);*/
                 i1--;                
                 tens=0;
                 i--;
@@ -85,16 +85,18 @@ int main (void)
             while ((i2-1) >= 0)
             {
                 temp = (num2[i2-1]-'0') + tens;
-                printf("temp is %d\n", temp);
+                /*printf("temp is %d\n", temp);*/
                 sum[i-1] = temp+ '0';
-                printf("sum[%d] is %c\n", i-1, sum[i-1]);
+                /*printf("sum[%d] is %c\n", i-1, sum[i-1]);*/
                 i2--;                
                 tens=0;
                 i--;
             }
         }
     sum[0]=tens+'0';                   
-    printf("sum[0] = %c", sum[0]);
+    if (sum[0]=='0')
+        sum[0]=' ';
+    /*printf("sum[0] = %c\n", sum[0]);*/
     printf("The sum is: %s\n", sum);
     return 0; 
     }
