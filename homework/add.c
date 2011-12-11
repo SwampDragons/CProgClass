@@ -48,7 +48,7 @@ int main (void)
     
     for (i=length+1; i>0; )
     {
-        while((i1-1) >=0 && (i2-1) >= 0)
+        while((i1) > 0 && (i2) > 0)
         {
             temp = (num1[i1-1]-'0') + (num2[i2-1]-'0') + tens;
             printf("temp is %d\n", temp);
@@ -73,7 +73,7 @@ int main (void)
             {
                 temp = (num1[i1-1]-'0') + tens;
                 printf("temp is %d\n", temp);
-                sum[i-1] = temp+ '0';
+                sum[i-1] = temp + '0';
                 printf("sum[%d] is %c\n", i-1, sum[i-1]);
                 i1--;                
                 tens=0;
@@ -93,6 +93,8 @@ int main (void)
                 i--;
             }
         }
+    sum[0]=tens+'0';                   
+    printf("sum[0] = %c", sum[0]);
     printf("The sum is: %s\n", sum);
     return 0; 
     }
