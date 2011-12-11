@@ -7,10 +7,47 @@
  * Use a local pointer variable to traverse the array
  * */
 #include <stdio.h>
-#include<stdlib.h>
+#include <stdlib.h>
+   
+void enterData(int* a, int* c);
+void printData(int*a, int count);
 
 int main (void)
 {
+    int counter =0;
+    int data[200];
+
+    enterData(data, &counter);
+    printData(data, counter);
+
+    return 0;
+}
+
+void enterData(int* a, int* c)
+{
+    int x;
     int i;
-    printf("enter values you want in array");
+    i=*c;
+
+    printf("Enter one value after each data prompt.  Please return after each one.\n Signal with <EOF> when you are done with data input.\n\nitem %d:          ", i+1 );
+    while (scanf("%d", &x) != EOF)
+    {
+        printf("\nitem %d:          ", i+2);
+        a[i++] = x;
+    } 
+    
+    *c=i;
+}
+void printData(int*a, int count)
+{
+    int i=0;
+   
+    printf("\nYou entered:\n");
+    
+    for (i=0; i<count; i++)
+    {
+        printf("%d, ", a[i]);
+    };
+    printf("\n");
+}
 
