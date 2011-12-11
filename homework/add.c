@@ -19,7 +19,7 @@ int main (void)
     char num1[1024];
     char num2[1024];
     int i=0;
-    int sum = 0;
+    char* sum = NULL;
 
     printf("Enter the first number\n");
     gets(num1);
@@ -29,17 +29,38 @@ int main (void)
     
     int i1=strlen(num1);    
     int i2=strlen(num2);    
-     
-     for ( i=0; i<i1; i++)
+    int length;
+    if (i1>=i2)
     {
-        sum += (num1[i]-48) * pow(10, i1-1-i);
-    };
-    for ( i=0; i<i2; i++)
+        length = i1;
+    }
+    else 
     {
-        sum += (num2[i]-48) * pow(10, i2-1-i);
-    };
-    printf("The sum is: %d\n", sum);
+        length = i2;
+    }
 
+    sum = malloc(sizeof(char)*length + 1);
+    sum[length+1]='\0';
+    
+    int temp =0;
+    int tens =0;
+    
+    for (i=length; i>0; i--)
+    {
+        temp = (num1[i]-'0') + (num2[i]-'0') + tens;
+        if(temp<10)
+        {
+            sum[i]=(temp);
+            tens =0;
+        }
+        else 
+        {
+            sum[i]=(temp-10);
+            tens = 1;
+        }
+    };
+
+    printf("The sum is: %s\n", sum);
 
     return 0; 
 }
